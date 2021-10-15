@@ -13,7 +13,7 @@ const EditProfile = ({ email, username, bio, image, initialize, handleSubmit, er
             image: image
 
         })
-    }, [email, username, bio, image])
+    }, [])
 
     return (
         <Row>
