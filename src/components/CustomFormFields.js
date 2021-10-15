@@ -1,5 +1,7 @@
 import { Form, Input } from 'antd';
 
+const {TextArea} = Input
+
 const makeField = (Component) => ({
     input,
     meta,
@@ -22,5 +24,6 @@ const makeField = (Component) => ({
   };
 
 export const NewInput = makeField(Input);
+export const NewTextArea = makeField(TextArea);
 
  

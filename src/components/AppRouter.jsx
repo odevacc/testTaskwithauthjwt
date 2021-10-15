@@ -31,7 +31,9 @@ const AppRouter = ({isAuth, getUser}) => {
                     </Switch>
                 </div>
             </Content>
-            <Footer></Footer>
+            <Footer className={s.footer}>
+                <></>
+            </Footer>
         </Layout>
     )
 }

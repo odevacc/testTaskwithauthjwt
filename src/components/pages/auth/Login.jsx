@@ -1,46 +1,53 @@
 import React from 'react'
-import { Form, Button, Col, Row} from 'antd';
+import { Form, Button, Col, Row, Typography } from 'antd';
 import { Field } from 'redux-form';
 import { NewInput } from '../../CustomFormFields';
 import s from './Login.module.css'
+import { NavLink } from 'react-router-dom';
 
+const { Title } = Typography
 
-const Login = ({error, handleSubmit}) => {
+const Login = ({ error, handleSubmit }) => {
     return (
-        <Row>
-            <Col span={12} offset={6}>
-                <Form
-                    labelCol={{ span: 8, }}
-                    wrapperCol={{ span: 8, }}
-                >
-                    <Col className={s.error} span={12} offset={8}>{error}</Col>
-                    <Field
-                        component={NewInput}
-                        label="E-mail"
-                        name="email"
-                        placeholder="Email"
-                        hasFeedback
-                    />
-
-                    <Field
-                        component={NewInput}
-                        label="Password"
-                        name="password"
-                        type="password"
-                        placeholder="Password"
-                        hasFeedback
-                    />
-
-                    <Form.Item
-                        wrapperCol={{ offset: 8, span: 16, }}
-                    >
-                        <Button type="primary" htmlType="submit" onClick={handleSubmit}>
-                            Войти
-                        </Button>
-                    </Form.Item>
-                </Form>
+        <div className={s.auth}>
+            <Col
+                span={8} offset={8}
+            >
+                <div>
+                    <Title level={3}>Авторизация</Title>
+                    <span>Нет аккаунта? </span><NavLink to='/registration'>Зарегестрироваться!</NavLink>
+                </div>
             </Col>
-        </Row>
+            <Row>
+                <Col span={8} offset={8}>
+                    <Form
+                    >
+                        <Col className={s.error}
+                        >{error}</Col>
+                        <Field className={s.input}
+                            component={NewInput}
+                            name="email"
+                            placeholder="Email"
+                            hasFeedback
+                        />
+
+                        <Field className={s.input}
+                            component={NewInput}
+                            name="password"
+                            type="password"
+                            placeholder="Password"
+                            hasFeedback
+                        />
+
+                        <div className={s.auth}>
+                            <Button type="primary" htmlType="submit" onClick={handleSubmit}>
+                                Войти
+                            </Button>
+                        </div>
+                    </Form>
+                </Col>
+            </Row>
+        </div>
     )
 }
 

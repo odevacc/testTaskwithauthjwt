@@ -11,5 +11,8 @@ export const userAPI = {
     },
     getUser() {
         return $auth.get('/user')
+    },
+    updateUser(email, username, bio, image) {
+        return $auth.put('/user', {user: {email, username, bio, image}})
     }
 }

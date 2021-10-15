@@ -1,58 +1,60 @@
 import React from 'react'
-import { Form, Button, Col, Row } from 'antd';
+import { Form, Button, Col, Row, Typography } from 'antd';
 import { Field } from 'redux-form';
 import { NewInput } from '../../CustomFormFields';
 import s from './Login.module.css'
+import { NavLink } from 'react-router-dom';
 
+const {Title} = Typography
 
-const Registration = ({handleSubmit, error}) => {
+const Registration = ({ handleSubmit, error }) => {
 
     return (
-        <Row>
-            <Col span={12} offset={6}>
-                <Form
-                    name="basic"
-                    labelCol={{ span: 8, }}
-                    wrapperCol={{ span: 8, }}
-                    initialValues={{ remember: true, }}
-                    autoComplete="off"
-                >
-                    <Col className={s.error} span={8} offset={8}>{error}</Col>
-                    <Field
-                        component={NewInput}
-                        label="User name"
-                        name="username"
-                        placeholder="User name"
-                        hasFeedback
-                    />
+        <div className={s.auth}>
+            <Title level={2}>Регистрация</Title>
+            <span>Нет аккаунта? </span>
+            <NavLink to='/login'>Войти!</NavLink>
+            <Row>
 
-                    <Field
-                        component={NewInput}
-                        label="E-mail"
-                        name="email"
-                        placeholder="Email"
-                        hasFeedback
-                    />
+                <Col span={8} offset={8}>
+                    <Form
 
-                    <Field
-                        component={NewInput}
-                        label="Password"
-                        name="password"
-                        type="password"
-                        placeholder="Password"
-                        hasFeedback
-                    />
-
-                    <Form.Item
-                        wrapperCol={{ offset: 8, span: 16, }}
+                        autoComplete="off"
                     >
-                        <Button type="primary" htmlType="submit" onClick={handleSubmit}>
-                            Зарегестрироваться
-                        </Button>
-                    </Form.Item>
-                </Form>
-            </Col>
-        </Row>
+                        <Col className={s.error} span={8} offset={8}>{error}</Col>
+                        <Field
+                        className={s.input}
+                            component={NewInput}
+                            name="username"
+                            placeholder="User name"
+                            hasFeedback
+                        />
+
+                        <Field
+                        className={s.input}
+                            component={NewInput}
+                            name="email"
+                            placeholder="Email"
+                            hasFeedback
+                        />
+
+                        <Field
+                            className={s.input}
+                            component={NewInput}
+                            name="password"
+                            type="password"
+                            placeholder="Password"
+                            hasFeedback
+                        />
+
+                        
+                            <Button type="primary" htmlType="submit" onClick={handleSubmit}>
+                                Зарегестрироваться
+                            </Button>
+                    </Form>
+                </Col>
+            </Row>
+        </div>
     )
 }
 

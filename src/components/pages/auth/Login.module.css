@@ -2,3 +2,12 @@
     color: rgb(185, 69, 69);
     margin-bottom: 1em;
 }
+
+.input{
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.auth {
+    text-align: center;
+}

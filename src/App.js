@@ -4,8 +4,18 @@ import 'antd/dist/antd.css'
 import AppRouter from './components/AppRouter.jsx';
 import { connect } from 'react-redux';
 import { getUser } from './store/reducers/authReducer.js';
+import { initializeApp } from './store/reducers/appReducer'
+import { useEffect } from 'react';
+import Preloader from './utils/preloader/Preloader.jsx';
 
-function App({isAuth, username, getUser}) {
+function App({isAuth, username, getUser, initializeApp, initialized}) {
+  useEffect(() => {
+    initializeApp()
+  })
+
+  if(!initialized){
+    return <Preloader/>
+  }
   
   return (
     <BrowserRouter>
@@ -17,8 +27,9 @@ function App({isAuth, username, getUser}) {
 let mapStateToProps = (state) => {
   return {
     isAuth : state.auth.isAuth,
-    username : state.auth.username
+    username : state.auth.username,
+    initialized : state.app.initialized
   }
 }
 
-export default connect(mapStateToProps, {getUser})(App);
+export default connect(mapStateToProps, {getUser, initializeApp})(App);

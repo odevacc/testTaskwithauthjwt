@@ -1,1 +1,3 @@
 export const SET_USER = 'SET_USER'
+export const INITIALIZE_SUCCESS = 'INITIALIZE_SUCCESS'
+export const UPDATE_USER = 'UPDATE_USER'

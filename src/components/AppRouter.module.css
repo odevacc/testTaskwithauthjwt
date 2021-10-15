@@ -3,5 +3,12 @@
 }
 
 .wrapper {
-    min-height: 82vh;
+    min-height: 88vh;
+    min-width: 100vw;
+}
+
+.footer {
+    height: 5.35vh;
+    background-color: rgb(82, 82, 82);
+    text-align: center;
 }
