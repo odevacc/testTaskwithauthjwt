@@ -1,13 +1,17 @@
-import { Button } from 'antd'
 import React from 'react'
-import { jwt } from '../../../api/api'
+import { Typography, Col, Row } from 'antd'
+
+const { Title } = Typography;
 
 const Home = () => {
 
     return (
-        <div>
-           <Button >click</Button>
-        </div>
+        <Row>
+            <Col span={8}></Col>
+            <Col span={8}>
+           <Title>Here should be home page</Title>
+           </Col>
+        </Row>
     )
 }
 

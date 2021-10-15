@@ -1,61 +1,56 @@
 import React from 'react'
-import { Form, Input, Button, Checkbox, Col, Row} from 'antd';
+import { Form, Button, Col, Row } from 'antd';
+import { Field } from 'redux-form';
+import { NewInput } from '../../CustomFormFields';
 
 
-const Registration = () => {
-    const onFinish = (values) => {
-        // console.log('Success:', values);
-    };
+const Registration = ({handleSubmit}) => {
 
-    const onFinishFailed = (errorInfo) => {
-        // console.log('Failed:', errorInfo);
-    };
     return (
-            <Row>
-                <Col span={12} offset={6}>
+        <Row>
+            <Col span={12} offset={6}>
                 <Form
                     name="basic"
                     labelCol={{ span: 8, }}
                     wrapperCol={{ span: 8, }}
                     initialValues={{ remember: true, }}
-                    onFinish={onFinish}
-                    onFinishFailed={onFinishFailed}
                     autoComplete="off"
                 >
-                    <Form.Item
-                        label="Username"
+                    <Field
+                        component={NewInput}
+                        label="User name"
                         name="username"
-                        rules={[{ required: true, message: 'Please input your username!', },]}
-                    >
-                        <Input />
-                    </Form.Item>
+                        placeholder="User name"
+                        hasFeedback
+                    />
 
-                    <Form.Item
+                    <Field
+                        component={NewInput}
                         label="E-mail"
                         name="email"
-                        rules={[{ required: true, message: 'Please input your email!', },]}
-                    >
-                        <Input />
-                    </Form.Item>
+                        placeholder="Email"
+                        hasFeedback
+                    />
 
-                    <Form.Item
+                    <Field
+                        component={NewInput}
                         label="Password"
                         name="password"
-                        rules={[{required: true, message: 'Please input your password!',},]}
-                    >
-                        <Input.Password />
-                    </Form.Item>
+                        type="password"
+                        placeholder="Password"
+                        hasFeedback
+                    />
 
                     <Form.Item
-                        wrapperCol={{offset: 8, span: 16,}}
+                        wrapperCol={{ offset: 8, span: 16, }}
                     >
-                        <Button type="primary" htmlType="submit">
-                            Submit
+                        <Button type="primary" htmlType="submit" onClick={handleSubmit}>
+                            Зарегестрироваться
                         </Button>
                     </Form.Item>
                 </Form>
-                </Col>
-            </Row>
+            </Col>
+        </Row>
     )
 }
 

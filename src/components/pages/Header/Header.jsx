@@ -1,10 +1,11 @@
 import { Button, Col, Image, Row } from 'antd'
-import React, { useState } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
+import { logout } from '../../../store/reducers/authReducer'
 import s from './Header.module.css'
 
-const HeaderComponent = ({isAuth, username}) => {
+const HeaderComponent = ({isAuth, username, logout}) => {
     return (
         <div>
         <Row>
@@ -15,8 +16,8 @@ const HeaderComponent = ({isAuth, username}) => {
         <NavLink className={s.btn} to='/home'>Домой</NavLink>
         {isAuth ?
         <span>
-        <span className={s.username}>{username}</span>
-        <Button className={s.btn}>Logout</Button></span> :
+        <NavLink className={s.username} to='/profile'>{username}</NavLink>
+        <Button className={s.btn} onClick={logout}>Logout</Button></span> :
         <span><NavLink className={s.btn} to='/login'>Войти</NavLink>
         <NavLink className={s.btn} to='registration'>Регистрация</NavLink></span>}
         </Col>
@@ -32,4 +33,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, null)(HeaderComponent) 
+export default connect(mapStateToProps, {logout})(HeaderComponent) 

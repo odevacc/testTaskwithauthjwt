@@ -5,8 +5,7 @@ import { NewInput } from '../../CustomFormFields';
 import s from './Login.module.css'
 
 
-const Login = (props) => {
-    console.log(props)
+const Login = ({error, handleSubmit}) => {
     return (
         <Row>
             <Col span={12} offset={6}>
@@ -14,7 +13,7 @@ const Login = (props) => {
                     labelCol={{ span: 8, }}
                     wrapperCol={{ span: 8, }}
                 >
-                    <Col className={s.error} span={12} offset={8}>{props.error}</Col>
+                    <Col className={s.error} span={12} offset={8}>{error}</Col>
                     <Field
                         component={NewInput}
                         label="E-mail"
@@ -35,7 +34,7 @@ const Login = (props) => {
                     <Form.Item
                         wrapperCol={{ offset: 8, span: 16, }}
                     >
-                        <Button type="primary" htmlType="submit" onClick={props.handleSubmit}>
+                        <Button type="primary" htmlType="submit" onClick={handleSubmit}>
                             Войти
                         </Button>
                     </Form.Item>

@@ -8,5 +8,8 @@ export const userAPI = {
 
     login(email, password) {
         return $public.post('/users/login', { user: { email, password } })
+    },
+    getUser() {
+        return $auth.get('/user')
     }
 }

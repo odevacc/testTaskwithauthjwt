@@ -1,6 +1,6 @@
-import { Layout, Row } from 'antd'
+import { Layout } from 'antd'
 import React from 'react'
-import { connect } from 'react-redux'
+import { useEffect } from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { authRoutes, publicRoutes } from '../routes'
 import s from './AppRouter.module.css'
@@ -8,8 +8,10 @@ import HeaderComponent from './pages/Header/Header'
 
 const { Header, Footer, Content } = Layout;
 
-const AppRouter = ({isAuth, username}) => {
-
+const AppRouter = ({isAuth, getUser}) => {
+    useEffect(() => {
+        getUser()
+    })
 
     return (
         <Layout>
@@ -34,11 +36,4 @@ const AppRouter = ({isAuth, username}) => {
     )
 }
 
-let mapStateToProps = (state) => {
-    return {
-        isAuth : state.auth.isAuth,
-        username : state.auth.username
-    }
-}
-
-export default connect(mapStateToProps, null)(AppRouter)
+export default AppRouter;

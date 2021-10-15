@@ -10,26 +10,16 @@ const $public = axios.create({
 const $auth = axios.create({
     baseURL: 'https://conduit.productionready.io/api',
     headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
     }
 })
-
-const authInterceptor = config => {
-    config.headers.authoriztion = `Bearer ${localStorage.getItem('token')}`
-    return config
-}
-
-$auth.interceptors.request.use(authInterceptor)
 
 export {
     $public,
     $auth
 }
 
-
-// export const jwt = (email, password) => {
-//     $public.post('/users/login', {users: {email, password}}).then(response => {console.log(response)})
-// }
 
 
 

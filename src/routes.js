@@ -1,23 +1,28 @@
 import LoginSupp from "./components/pages/auth/LoginSupp"
-import Registration from "./components/pages/auth/Registration"
+import RegistrationSupp from "./components/pages/auth/RegistrationSupp"
 import Home from "./components/pages/Home/Home"
+import Profile from "./components/pages/Profile/Profile"
 
 
 export const publicRoutes = [
     {
         path: '/registration',
-        Component: Registration
+        Component: RegistrationSupp
     },
     {
         path: '/login',
         Component: LoginSupp
+    },
+    {
+        path: '/home',
+        Component: Home
     }
     
 ]
 
 export const authRoutes = [
     {
-        path: '/home',
-        Component: Home
+        path: '/profile',
+        Component: Profile
     }
 ]
