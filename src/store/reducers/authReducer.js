@@ -1,7 +1,6 @@
 import { SET_USER, UPDATE_USER } from "../consts";
 import { userAPI } from "../../api/userAPI";
 import { stopSubmit } from "redux-form";
-import { StaticRouter } from "react-router";
 
 const initialState = {
     isAuth: false
