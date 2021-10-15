@@ -21,7 +21,7 @@ const AppRouter = ({isAuth, getUser}) => {
             <Content className={s.wrapper}>
                 <div className={s.switchdiv}>
                     <Switch>
-                        {isAuth && authRoutes.map(({path, Component}) => 
+                        {isAuth && authRoutes.map(({ path, Component }) => 
                             <Route key={path} path={path} component={Component} exact/>
                         )}
                         {publicRoutes.map(({ path, Component }) =>

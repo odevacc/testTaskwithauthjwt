@@ -2,9 +2,10 @@ import React from 'react'
 import { Form, Button, Col, Row } from 'antd';
 import { Field } from 'redux-form';
 import { NewInput } from '../../CustomFormFields';
+import s from './Login.module.css'
 
 
-const Registration = ({handleSubmit}) => {
+const Registration = ({handleSubmit, error}) => {
 
     return (
         <Row>
@@ -16,6 +17,7 @@ const Registration = ({handleSubmit}) => {
                     initialValues={{ remember: true, }}
                     autoComplete="off"
                 >
+                    <Col className={s.error} span={8} offset={8}>{error}</Col>
                     <Field
                         component={NewInput}
                         label="User name"

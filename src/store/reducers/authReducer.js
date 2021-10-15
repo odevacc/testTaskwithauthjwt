@@ -42,14 +42,16 @@ export const registration = (username, email, password) => async (dispatch) => {
         let {email, username, bio, image} = response.data.user
         dispatch(setUser(email, username, bio, image, true))
     }).catch(e => {
-        dispatch(stopSubmit('registration', {_error: "Такой пользователь уже существует"}))
-})
+        dispatch(stopSubmit('registration', {_error: "Пользователь с таким Ником или Email уже зарегестрирован" }))
+    
+    })
 }
 
 export const login = (email, password) => async (dispatch) => {
     return await userAPI.login(email, password).then(response => {
         localStorage.setItem('token', response.data.user.token)
-        dispatch(getUser())
+        let {email, username, bio, image} = response.data.user
+        dispatch(setUser(email, username, bio, image, true))
     }).catch(e => {
         dispatch(stopSubmit('login', {_error: "Email или пароль указан не правильно" }))
     
