@@ -23,9 +23,6 @@ export const initializeApp = () => (dispatch) => {
     Promise.all([promise]).then(() => {
         dispatch(initializedSuccess());
     })
-    // .catch(e => {
-    //     localStorage.removeItem('token')
-    //     });
 }
 
 export default appReducer;

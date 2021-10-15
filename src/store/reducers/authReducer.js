@@ -79,7 +79,7 @@ export const updateUser = (email, username, bio, image, password) => async (disp
         
         dispatch(setUser(email, username, bio, image, true))
     }).catch(e => 
-        dispatch(stopSubmit('editProfile', {_error: `что то пошло не так ${JSON.stringify(e)}`})))
+        dispatch(stopSubmit('editProfile', {_error: `Что то пошло не так`})))
 }
 
 
