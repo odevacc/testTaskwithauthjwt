@@ -7,7 +7,6 @@ const initialState = {
 }
 
 const authReducer = (state = initialState, action) => {
-    console.log(state)
     switch (action.type) {
         case SET_USER: {
             return {
@@ -52,7 +51,6 @@ export const registration = (username, email, password) => async (dispatch) => {
 export const login = (email, password) => async (dispatch) => {
     return await userAPI.login(email, password).then(response => {
         localStorage.setItem('token', response.data.user.token)
-        console.log(response.data.user.token)
         let { email, username, bio, image } = response.data.user
         dispatch(setUser(email, username, bio, image, true))
     }).catch(e => {
