@@ -33,6 +33,12 @@ export const getUser = () => async (dispatch) => {
         await userAPI.getUser(token).then(response => {
             let { email, username, bio, image } = response.data.user
             dispatch(setUser(email, username, bio, image, true))
+            
+        })
+        .catch(e => {
+            console.warn("Error", e.message)
+            localStorage.removeItem('token')
+            setUser(null, null, null, null, false)
         })
     }
 }
