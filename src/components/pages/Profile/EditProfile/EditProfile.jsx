@@ -5,6 +5,8 @@ import { Field } from 'redux-form'
 import { NewInput, NewTextArea } from '../../../CustomFormFields'
 
 const EditProfile = ({ email, username, bio, image, initialize, handleSubmit, error }) => {
+
+    
     useEffect(() => {
         initialize({
             bio: bio,
@@ -13,7 +15,7 @@ const EditProfile = ({ email, username, bio, image, initialize, handleSubmit, er
             image: image
 
         })
-    },[email, username, bio, image, initialize])
+    }, [email, username, bio, image, initialize])
 
     return (
         <Row>

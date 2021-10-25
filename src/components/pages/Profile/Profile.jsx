@@ -6,9 +6,9 @@ import EditProfileSupp from './EditProfile/EditProfileSupp';
 const Profile = () => {
     return (
         <div>
-        <EditProfileSupp/>
+            <EditProfileSupp />
         </div>
     )
 }
 
-export default Profile
+export default Profile;

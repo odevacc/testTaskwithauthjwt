@@ -7,7 +7,7 @@ const initialState = {
 }
 
 const authReducer = (state = initialState, action) => {
-
+    console.log(state)
     switch (action.type) {
         case SET_USER: {
             return {
@@ -29,15 +29,12 @@ export default authReducer;
 const setUser = (email, username, bio, image, isAuth) => ({ type: SET_USER, payload: { email, username, bio, image, isAuth } })
 
 export const getUser = () => async (dispatch) => {
-    let token = localStorage.getItem('token')
-    if (token) {
-        return await userAPI.getUser().then(response => {
+    if (localStorage.getItem('token')) {
+        let token = localStorage.getItem('token')
+        await userAPI.getUser(token).then(response => {
             let { email, username, bio, image } = response.data.user
             dispatch(setUser(email, username, bio, image, true))
         })
-
-    } else {
-        return dispatch(setUser(null, null, null, null, false))
     }
 }
 
@@ -47,7 +44,7 @@ export const registration = (username, email, password) => async (dispatch) => {
         let { email, username, bio, image } = response.data.user
         dispatch(setUser(email, username, bio, image, true))
     }).catch(e => {
-        dispatch(stopSubmit('registration', { _error: "Пользователь с таким Ником или Email уже зарегестрирован" }))
+        dispatch(stopSubmit('registration', { _error: e.message || 'errorD' }))
 
     })
 }
@@ -55,10 +52,11 @@ export const registration = (username, email, password) => async (dispatch) => {
 export const login = (email, password) => async (dispatch) => {
     return await userAPI.login(email, password).then(response => {
         localStorage.setItem('token', response.data.user.token)
+        console.log(response.data.user.token)
         let { email, username, bio, image } = response.data.user
         dispatch(setUser(email, username, bio, image, true))
     }).catch(e => {
-        dispatch(stopSubmit('login', { _error: "Email или пароль указан не правильно" }))
+        dispatch(stopSubmit('login', { _error: e.message || "Email или пароль указан не правильно" }))
 
     })
 }
@@ -69,16 +67,17 @@ export const logout = () => (dispatch) => {
 }
 
 export const updateUser = (email, username, bio, image, password) => async (dispatch) => {
-    return await userAPI.updateUser(email, username, bio, image, password).then(response => {
-        let token = localStorage.getItem('token')
+    let token = localStorage.getItem('token')
+    return await userAPI.updateUser(email, username, bio, image, password, token).then(response => {
         let { email, username, bio, image } = response.data.user
-        if (token !== response.data.user.token) {
+        if (localStorage.getItem('token') !== response.data.user.token) {
+            localStorage.removeItem('token')
             localStorage.setItem('token', response.data.user.token)
         }
-        
+
         dispatch(setUser(email, username, bio, image, true))
-    }).catch(e => 
-        dispatch(stopSubmit('editProfile', {_error: `Что то пошло не так`})))
+    }).catch(e =>
+        dispatch(stopSubmit('editProfile', { _error: e.message || `Что то пошло не так` })))
 }
 
 

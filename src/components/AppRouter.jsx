@@ -1,6 +1,5 @@
 import { Layout } from 'antd'
-import React from 'react'
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { authRoutes, publicRoutes } from '../routes'
 import s from './AppRouter.module.css'
@@ -8,7 +7,8 @@ import HeaderComponent from './pages/Header/Header'
 
 const { Header, Footer, Content } = Layout;
 
-const AppRouter = ({isAuth, getUser}) => {
+const AppRouter = ({ isAuth, getUser }) => {
+
     useEffect(() => {
         getUser()
     })
@@ -21,8 +21,8 @@ const AppRouter = ({isAuth, getUser}) => {
             <Content className={s.wrapper}>
                 <div className={s.switchdiv}>
                     <Switch>
-                        {isAuth && authRoutes.map(({ path, Component }) => 
-                            <Route key={path} path={path} component={Component} exact/>
+                        {isAuth && authRoutes.map(({ path, Component }) =>
+                            <Route key={path} path={path} component={Component} exact />
                         )}
                         {publicRoutes.map(({ path, Component }) =>
                             <Route key={path} path={path} component={Component} exact />
@@ -32,7 +32,6 @@ const AppRouter = ({isAuth, getUser}) => {
                 </div>
             </Content>
             <Footer className={s.footer}>
-                <></>
             </Footer>
         </Layout>
     )

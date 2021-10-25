@@ -9,8 +9,8 @@ const Home = () => {
         <Row>
             <Col span={8}></Col>
             <Col span={8}>
-           <Title>Here should be home page</Title>
-           </Col>
+                <Title>Here should be home page</Title>
+            </Col>
         </Row>
     )
 }

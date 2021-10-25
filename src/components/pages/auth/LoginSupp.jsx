@@ -6,20 +6,20 @@ import { connect } from 'react-redux'
 import { login } from '../../../store/reducers/authReducer'
 import { Redirect } from 'react-router'
 
-const LoginForm = reduxForm({form: 'login', validate})(Login)
+const LoginForm = reduxForm({ form: 'login', validate })(Login)
 
-const LoginSupp = ({login, isAuth}) => {
+const LoginSupp = ({ login, isAuth }) => {
     const onSubmit = (values) => {
-        const {email, password} = values
+        const { email, password } = values
         login(email, password)
 
     }
-    if(isAuth) {
-        return <Redirect to='/home'/>
+    if (isAuth) {
+        return <Redirect to='/profile' />
     }
     return (
         <div>
-            <LoginForm onSubmit={onSubmit}/>
+            <LoginForm onSubmit={onSubmit} />
         </div>
     )
 }
@@ -32,6 +32,6 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, {login})(LoginSupp)
+export default connect(mapStateToProps, { login })(LoginSupp)
 
 

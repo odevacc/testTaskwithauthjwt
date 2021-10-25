@@ -5,7 +5,7 @@ import { NewInput } from '../../CustomFormFields';
 import s from './Login.module.css'
 import { NavLink } from 'react-router-dom';
 
-const {Title} = Typography
+const { Title } = Typography
 
 const Registration = ({ handleSubmit, error }) => {
 
@@ -23,7 +23,7 @@ const Registration = ({ handleSubmit, error }) => {
                     >
                         <Col className={s.error} span={8} offset={8}>{error}</Col>
                         <Field
-                        className={s.input}
+                            className={s.input}
                             component={NewInput}
                             name="username"
                             placeholder="User name"
@@ -31,7 +31,7 @@ const Registration = ({ handleSubmit, error }) => {
                         />
 
                         <Field
-                        className={s.input}
+                            className={s.input}
                             component={NewInput}
                             name="email"
                             placeholder="Email"
@@ -47,10 +47,10 @@ const Registration = ({ handleSubmit, error }) => {
                             hasFeedback
                         />
 
-                        
-                            <Button type="primary" htmlType="submit" onClick={handleSubmit}>
-                                Зарегестрироваться
-                            </Button>
+
+                        <Button type="primary" htmlType="submit" onClick={handleSubmit}>
+                            Зарегестрироваться
+                        </Button>
                     </Form>
                 </Col>
             </Row>

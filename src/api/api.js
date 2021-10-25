@@ -1,17 +1,15 @@
 import axios from "axios";
 
+const url = 'https://api.realworld.io/api'
+
 const $public = axios.create({
-    baseURL: 'https://conduit.productionready.io/api',
-    headers: {
-        'Content-Type': 'application/json'
-    }
+    baseURL: url
 })
 
-const $auth = axios.create({
-    baseURL: 'https://conduit.productionready.io/api',
+const $auth = (token) => axios.create({
+    baseURL: url,
     headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('token')}`
+        'Authorization': `Token ${token}`
     }
 })
 

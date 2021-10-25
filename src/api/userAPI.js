@@ -9,10 +9,10 @@ export const userAPI = {
     login(email, password) {
         return $public.post('/users/login', { user: { email, password } })
     },
-    getUser() {
-        return $auth.get('/user')
+    getUser(token) {
+        return $auth(token).get('/user')
     },
-    updateUser(email, username, bio, image) {
-        return $auth.put('/user', {user: {email, username, bio, image}})
+    updateUser(email, username, bio, image, password, token) {
+        return $auth(token).put('/user', { user: { email, username, bio, image, password } })
     }
 }
